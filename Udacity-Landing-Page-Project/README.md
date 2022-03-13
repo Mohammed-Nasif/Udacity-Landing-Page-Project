@@ -35,7 +35,7 @@ This Project is about building Navigation Bar for Landing Page Dynamically using
 
 - [Contribute](#contribute)
 
-- [License](#License-&-Copyright)
+- [License](#license-&-Copyright)
 
   
 
