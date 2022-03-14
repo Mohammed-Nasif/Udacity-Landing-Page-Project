@@ -1,0 +1,327 @@
+/*
+ * 
+ * CSS written based on SMACSS architecture.
+ * To learn more, visit: http://smacss.com/
+ * 
+ * For simplicity, no reset or normalize is added. 
+ * To learn more, visit: https://css-tricks.com/reboot-resets-reasoning/
+ *
+ */
+
+
+/*
+ *
+ * This CSS Style File has been modified by Mohammed Nasif to be the style you see on screen interface.
+ * All of these styles Modified to be responsive on all screen types.
+ * Modification Date : 13/3/2022.
+ *
+*/
+
+
+/* ---- Base Rules ---- */
+body {
+    background: rgb(136,203,171);
+    background: linear-gradient(0deg, rgba(136,203,171,1) 0%, rgba(0,13,60,1) 100%);
+    margin: 0;
+    font-family: 'Merriweather', serif;
+    color: #fff;
+}
+
+
+/* Typeography General*/
+h1 {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 3em;
+    margin: 0em 1rem;
+}
+
+@media only screen and (min-width: 35em){
+    h1 {
+        font-size: 7em;
+        margin: 0em 4rem 1em;
+    }
+}
+
+h2 {
+    border-bottom: 1px solid #cc1;
+    font-family: 'Oxygen', Sans-Serif;
+    font-size: 3em;
+    color: #fff;
+    padding-top: 10px;
+}
+
+p {
+    line-height: 1.6em;
+    color: #eee;
+}
+
+
+@media (max-width: 656px) {
+    p {
+        font-size: 15px;
+    }
+  }
+
+@media (min-width: 389px) and (max-width: 485px) {
+    p {
+        font-size: 14px;
+    }
+  }
+@media (max-width: 380px) {
+    p {
+        font-size: 11.5px;
+    }
+  }
+/* ---- Layout Rules ---- */
+main {
+    margin: 10vh 1em 10vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main__hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+section {
+    position: relative;
+    height: 90vh;
+}
+
+
+/* ---- Module Rules ---- */
+
+/* Navigation Styles*/
+.navbar__menu ul {
+    margin: 0px 0px 0px -80px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.navbar__menu li {
+    display: inline-block;
+    position: relative;
+}
+.navbar__menu li::before {
+    content: "";
+    width: 100%;
+    height: 6px;
+    background-color: rgb(201 90 90);
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    z-index: 8;
+}
+
+.navbar__menu .menu__link {
+    display: block;
+    padding: 1em;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #ffffff;
+}
+.active_button{
+    display: block;
+    background: #051440;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    color: rgb(201 90 90) !important;
+}
+
+.navbar__menu .menu__link:hover {
+    background: rgba(51, 51, 51, 0.582);
+    color: rgba(201, 90, 90, 0.712);
+    transition: ease 0.3s all;
+}
+
+/* Header Styles */
+.page__header {
+    background: rgb(75, 75, 75);
+    padding: 5px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+    box-shadow: 0px 0px 10px 5px rgba(219, 255, 250, 0.253);
+}
+
+/* Footer Styles */
+.page__footer {
+    background: rgb(75, 75, 75);
+    padding: 5px 20px;
+}
+
+.page__footer p{
+    color: rgb(201 90 90);
+}
+
+#return_top{
+    position: relative;
+    left: 89%;
+    bottom: 7%;
+    background-color: transparent;
+    width: 0 ;
+    height: 0;
+    border: 18px solid transparent;
+    border-bottom-color: rgb(201 90 90);
+    cursor: pointer;
+    animation-name: arrow-ping;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-fill-mode: backwards;
+    animation-timing-function: ease-out; 
+    transition: ease 0.5s;
+}
+
+#return_top::before{
+    position: absolute;
+    content: "";
+    width: 0 ;
+    height: 0;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -30px);
+    border: 22px solid transparent;
+    border-bottom-color: #051440;
+    cursor: pointer;
+
+}
+
+@keyframes arrow-ping {
+
+    25% { transform: translateY( -10px);
+    }
+    100% { transform: translateY(10px);
+    }
+}
+
+.return_top > a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    z-index: 8;
+}
+
+
+/* ---- Theme Rules ---- */
+/* Landing Container Styles */
+.landing__container {
+    padding: 1em;
+    text-align: left;
+}
+
+@media only screen and (min-width: 35em){
+    .landing__container {
+        max-width: 50em;
+        padding: 4em;
+    }
+}
+
+section:nth-of-type(even) .landing__container {
+    margin-right: 0;
+    margin-left: auto;
+    text-align: right; 
+}
+
+/* Background Circles */
+/* Note that background circles are created with psuedo elements before and after */
+/* Circles appear to be random do to use of :nth-of-type psuedo class */
+section:nth-of-type(odd) .landing__container::before {
+    content: '';
+    background: rgba(255, 255, 255, 0.187);
+    position: absolute;
+    z-index: -5;
+    width: 20vh;
+    height: 20vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+section:nth-of-type(even) .landing__container::before {
+    content: '';
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
+    position: absolute;
+    top: 3em;
+    right: 3em;
+    z-index: -5;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+section:nth-of-type(3n) .landing__container::after {
+    content: '';
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -5;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+section:nth-of-type(3n + 1) .landing__container::after {
+    content: '';
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
+    position: absolute;
+    right: 20vw;
+    bottom: -5em;
+    z-index: -5;
+    width: 15vh;
+    height: 15vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+
+/* ---- Theme State Rules ---- */
+/* Section Active Styles */
+/* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
+section.your-active-class {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+section.your-active-class .landing__container::before {
+    opacity: 1;
+    animation: rotate 4s linear 0s infinite forwards;
+}
+
+section.your-active-class .landing__container::after {
+    opacity: 1;
+    animation: rotate 5s linear 0s infinite forwards reverse;
+}
+
+/* Section Active Styles Keyframe Animations */
+@keyframes rotate {
+	from {
+		transform: rotate(0deg)
+		           translate(-1em)
+		           rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg)
+		           translate(-1em) 
+		           rotate(-360deg);
+	}
+}
